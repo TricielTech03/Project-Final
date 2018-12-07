@@ -19,7 +19,7 @@ public class User {
 	private Long id;
 	 
 	private String firstName;
-	private String lasrName;
+	private String lastName;
 	private String userName;
 	private String email;
 	private String password;
@@ -41,13 +41,13 @@ public class User {
 	public User() {
 		//super();
 	}
-	public User(Long id, String firstName, String lasrName, String userName, String email, String password,
+	public User(Long id, String firstName, String lastName, String userName, String email, String password,
 			String phoneMobile, String phoneLL, String address, Date updatedDate, Date createdDate, Long updatedBy,
 			Long createdBy) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
-		this.lasrName = lasrName;
+		this.lastName = lastName;
 		this.userName = userName;
 		this.email = email;
 		this.password = password;
@@ -71,11 +71,11 @@ public class User {
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-	public String getLasrName() {
-		return lasrName;
+	public String getLastName() {
+		return lastName;
 	}
-	public void setLasrName(String lasrName) {
-		this.lasrName = lasrName;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 	public String getUserName() {
 		return userName;
@@ -139,7 +139,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lasrName=" + lasrName + ", userName=" + userName
+		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName
 				+ ", email=" + email + ", password=" + password + ", phoneMobile=" + phoneMobile + ", phoneLL="
 				+ phoneLL + ", address=" + address + ", updatedDate=" + updatedDate + ", createdDate=" + createdDate
 				+ ", updatedBy=" + updatedBy + ", createdBy=" + createdBy + "]";

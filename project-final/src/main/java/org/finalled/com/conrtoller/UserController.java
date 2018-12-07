@@ -6,31 +6,43 @@ import java.util.Optional;
 import org.finalled.com.entity.User;
 import org.finalled.com.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 	
-	public List<User> getUsers() {
-		return userService.getUsers();
-	}
+	/*@Autowired
+	private UserRepository userRepository;*/
 	
-	public Optional<User> getUser(Long id) {
+	@RequestMapping("/getUsers")
+	public List<User> getUsers() {
+			return userService.getUsers();
+		/*List<User> users = new ArrayList<>();
+		userRepository.findAll().forEach(users::add);
+		return users;*/
+			
+	}
+	@RequestMapping("/getUser/{id}")
+	public Optional<User> getUser(@PathVariable Long id) {
 		return userService.getUser(id);
 	}
-	
-	public void createUser(User user) {
+	@RequestMapping(value="/createUser", method=RequestMethod.POST)
+	public void createUser(@RequestBody User user) {
 		userService.addUser(user);		
 	}
-	
-	public void updateUser(User user, Long id) {
-		userService.updateUser(user, id);
+	@RequestMapping(value ="/updateUser", method=RequestMethod.POST)
+	public void updateUser(@RequestBody User user) {
+		userService.updateUser(user);
 	}
-	
-	public void deleteUser(Long id) {
+	@RequestMapping("/deleteUser/{id}")
+	public void deleteUser(@PathVariable Long id) {
 		userService.deleteUser(id);
 	}
 }
