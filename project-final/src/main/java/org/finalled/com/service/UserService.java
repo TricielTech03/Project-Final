@@ -19,19 +19,26 @@ public class UserService {
 		return users;
 	}
 	
-	public void addUser(User user) {
-		userRepository.save(user);
+	public boolean addUser(User user) {
+		 return userRepository.save(user) != null;
 	}
 	
-	public void updateUser(User user, Long id) {
-		userRepository.save(user);
+	public boolean updateUser(User user, Long id) {
+		return userRepository.save(user) != null;
 	}
 	
-	public void deleteUser(Long id) {
-		userRepository.deleteById(id);
+	public boolean deleteUser(Long id) {
+		if(userRepository.findById(id)!=null) {
+		 userRepository.deleteById(id);
+		 return true;
+		}else {
+			return false;
+		}
+		
 	}
 	
 	public Optional<User> getUser(Long id) {
 		return userRepository.findById(id);
 	}
 }
+
