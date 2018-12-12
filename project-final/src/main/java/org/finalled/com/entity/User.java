@@ -2,6 +2,7 @@ package org.finalled.com.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,10 +16,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 public class User {
          
 	@Id 
-	@GeneratedValue()
+	//@GeneratedValue()
 	private Long id;
 	 
+	/*@Column(name = "truck_name")*/
 	private String firstName;
+	
 	private String lastName;
 	private String userName;
 	private String email;
