@@ -77,35 +77,14 @@ public class User {
 	  private Long createdBy;
    
  
- 
- 
- 
+
  @ManyToMany(cascade=CascadeType.ALL)
  @JoinTable(name="user_role", joinColumns=@JoinColumn(name="user_id"), inverseJoinColumns=@JoinColumn(name="role_id"))
  private Set<Role> roles;
 
- 
- 
- 
- 
- 
- 
- 
-
  public User() {
 	
 }
-
- 
- 
- 
- 
- 
- 
-
-
-
-
 
 
 
@@ -113,22 +92,7 @@ public User(String email) {
 	super();
 	this.email = email;
 	
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public User(Long id, String email, String firstname, String lastname, String password, int active, String userName,
+}public User(Long id, String email, String firstname, String lastname, String password, int active, String userName,
 		String phoneMobile, String phoneLL, String address, Date updatedDate, Date createdDate, Long updatedBy,
 		Long createdBy, Set<Role> roles) {
 	super();

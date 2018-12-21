@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -38,18 +39,14 @@ public class UserController {
  private UserService userService;
  
  @RequestMapping(value= {"/", "/login_user.php"}, method=RequestMethod.GET)
- public ModelAndView login(/*@RequestParam String email*/) {
+ public ModelAndView login() {
   ModelAndView model = new ModelAndView();
-  /*User user=new User();
-  model.addObject("userEmail" +user.getEmail());*/
+  
   model.setViewName("user/login_user.php");
   return model;
  }
- /*@RequestMapping(value = "/mno/{objectKey}", method = RequestMethod.GET, produces = "application/json")
- public List<String> getBook(HttpServletRequest httpServletRequest, @PathVariable(name = "objectKey") String objectKey
-   , @RequestParam(value = "id", defaultValue = "false")String id,@RequestParam(value = "name", defaultValue = "false") String name) throws Exception {
-            //logic
-*/ @RequestMapping(value= {"/signup"}, method=RequestMethod.GET)
+
+ @RequestMapping(value= {"/signup"}, method=RequestMethod.GET)
  public ModelAndView signup() {
   ModelAndView model = new ModelAndView();
   User user = new User();
@@ -137,24 +134,26 @@ public class UserController {
 		userService.deleteUser(id);
    	}
 	
-	
-	 @RequestMapping(value= {"/userDetails"}, method=RequestMethod.GET)
+	/*
+	 @RequestMapping(value= {"/login_user"}, method=RequestMethod.POST)
 	 public List<userDetailsDTO> findUserByUserName(@Param("email") String email,@Param("password") String password)
 	 {
 		 
 		 
 			return userService.findUserByUserName(email,password);
-	      }
-	/* public Map<String, List<User>> findUserByUserName(@Param("email") String email) throws JsonProcessingException 
+	      }*/
+	 @RequestMapping(value= {"/login_user.php1"}, method=RequestMethod.POST)
+	
+	 public Map<String, List<userDetailsDTO>> findUserByUserName(@Param(value = "email") String email, @Param(value = "password") String password) throws JsonProcessingException 
 		{
-		 Map<String, List<User>> usersMap = new HashMap<String, List<User>>();
-		  List<User> Users = userService.findUserByUserName(email);
+		 Map<String, List<userDetailsDTO>> usersMap = new HashMap<String, List<userDetailsDTO>>();
+		  List<userDetailsDTO> Users = userService.findUserByUserName(email,password);
 		  usersMap.put("result", Users);
 		  ObjectMapper mapper = new ObjectMapper();
 		  System.out.println(mapper.writeValueAsString(usersMap));
 
 		  return usersMap;
 		
-		}*/
+		}
 	
 }

@@ -32,4 +32,6 @@ public List<userDetailsDTO> findUserByUserName(String email,String password);
 	public boolean deleteUser(Long id);
 	
 	public Optional<User> getUser(Long id);
+
+	
 }
