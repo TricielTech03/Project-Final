@@ -115,7 +115,8 @@ public class UserController {
 		    return userService.getUser(id);
 	      }
 	
-	//Rest api method to create a new user
+	
+	//Rest api method to create a new user and getting json response
 	@RequestMapping(value="/createUser", method=RequestMethod.POST)
 	public void createUser(@RequestBody User user) 
 	      {
