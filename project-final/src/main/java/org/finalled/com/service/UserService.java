@@ -1,46 +1,35 @@
 package org.finalled.com.service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.finalled.com.entity.User;
-import org.finalled.com.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.finalled.com.repository.userDetailsDTO;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserService {
-
-	@Autowired
-	private UserRepository userRepository;
+@Transactional
+public interface UserService {
+  
+ public User findUserByEmail(String email);
+ 
+public List<userDetailsDTO> findUserByUserName(String email,String password);
+ 
+ 
+ 
+ 
+ public void saveUser(User user);
+ 
+	public List<User> getUsers();
 	
-	public List<User> getUsers(){
-		List<User> users = new ArrayList<>();
-		userRepository.findAll().forEach(users::add); 
-		return users;
-	}
+	public void addUser(User user);
 	
-	public void addUser(User user) {
-		  userRepository.save(user);
-	}
+	public void updateUser(User user);
 	
-	public void updateUser(User user) {
-		 userRepository.save(user);
-	}
+	public boolean deleteUser(Long id);
 	
-	public boolean deleteUser(Long id) {
-		if(userRepository.findById(id)!=null) {
-		 userRepository.deleteById(id);
-		 return true;
-		}else {
-			return false;
-		}
-		
-	}
-	
-	public Optional<User> getUser(Long id) {
-		return userRepository.findById(id);
-	}
+	public Optional<User> getUser(Long id);
 }
-

@@ -32,7 +32,7 @@ public class TruckController
 		      {
 				return truckService.getTrucks();
 		      }*/
-	     @RequestMapping("/getTrucks")
+	     @RequestMapping("/vehicle_list.php")
 		public Map<String, List<Truck>> getTrucks() throws JsonProcessingException 
 		{
 		 Map<String, List<Truck>> usersMap = new HashMap<String, List<Truck>>();
