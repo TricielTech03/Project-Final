@@ -79,6 +79,13 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.monitorjbl/json-view -->
+		<!--for exclude/include of JSON-->
+<dependency>
+    <groupId>com.monitorjbl</groupId>
+    <artifactId>json-view</artifactId>
+    <version>1.0.1</version>
+</dependency>
 	</dependencies>
 
 	<build>

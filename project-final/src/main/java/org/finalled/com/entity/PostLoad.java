@@ -58,6 +58,18 @@ public class PostLoad
 		
 	}
 
+	
+	
+	public PostLoad(Long id, String userId, String truckType, String capacity) {
+		super();
+		this.id = id;
+		this.userId = userId;
+		this.truckType = truckType;
+		this.capacity = capacity;
+	}
+
+
+
 	public PostLoad(@JsonProperty("id") Long id,                      @JsonProperty("user_id")  String userId,       @JsonProperty("truck_type") String truckType,           @JsonProperty("capacity") String capacity,                @JsonProperty("goods_type")  String goodsType,         @JsonProperty("goods_photo")  String goodsPhoto,
 			        @JsonProperty("from_address") String fromAddress, @JsonProperty("to_address")  String toAddress, @JsonProperty("freight_charges") String freightCharges, @JsonProperty("location_charges") String locationCharges, @JsonProperty("display_charges")  String displayCharges,
 			        @JsonProperty("cdate") Date cDate,                @JsonProperty("ctime") Time cTime) {
