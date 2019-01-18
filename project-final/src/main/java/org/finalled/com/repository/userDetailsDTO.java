@@ -16,17 +16,25 @@ public class userDetailsDTO {
 	@NonNull
 	
 	@Column(name="username")
-    public String userName;
+    public String username;
 	@NonNull
-	@Column(name="user_id")
+	@Column(name="password")
     public String password;
 	
+	@Column(name="user_id")
+    public Long id;
 
-	public userDetailsDTO(@JsonProperty("email") String email,  @JsonProperty("username") String username, @JsonProperty("user_id") String password) {
+	@NonNull
+	@Column(name="usertype")
+    public String usertype;
+	
+	public userDetailsDTO(@JsonProperty("email") String email,  @JsonProperty("username") String username, @JsonProperty("password") String password,@JsonProperty("user_id") Long id, @JsonProperty("usertype") String usertype) {
 		super();
 		this.email = email;
-		this.userName = username;
+		this.username = username;
 		this.password = password;
+		this.id = id;
+		this.usertype = usertype;
 	}
 
 	public userDetailsDTO() {

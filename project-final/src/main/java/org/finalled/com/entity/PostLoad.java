@@ -192,11 +192,4 @@ public class PostLoad
 	public void setcTime(Time cTime) {
 		this.cTime = cTime;
 	}
-	
-	
-	
-	
-	
-	
-	
-}
+	}

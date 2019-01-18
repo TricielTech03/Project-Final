@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity(name = "vehicle_test")
 public class Test {
 	@Id
-	@GeneratedValue()
+	/* @GeneratedValue() */
 	
 	private Long id;
 	
@@ -214,21 +214,6 @@ public class Test {
 
 	public void setDistance(String distance) {
 		this.distance = distance;
-	}
-
-	/*@Override
-	public String toString() {
-		return "Truck [id=" + id + ", truckNo=" + truckNo + ", truckName=" + truckName + ", truckType=" + truckType
-				+ ", truckMainImg=" + truckMainImg + ", truckOwner=" + truckOwner + ", truckOwnerPhone="
-				+ truckOwnerPhone + ", driverId=" + driverId + ", diverName=" + diverName + ", driverMobileNumber="
-				+ driverMobileNumber + ", vehicleRating=" + vehicleRating + ", favouriteStatus=" + favouriteStatus
-				+ ", frieghtCharge=" + frieghtCharge + ", latitude=" + latitude + ", longitude=" + longitude
-				+ ", distance=" + distance + "]";
-	}*/
-	
-	
-	
-
-	
+	}	
 	
 }

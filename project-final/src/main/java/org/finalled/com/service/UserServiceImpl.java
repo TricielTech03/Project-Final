@@ -41,7 +41,8 @@ public class UserServiceImpl implements UserService {
  @Override
  public void saveUser(User user) {
   user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
-  user.setActive(1);
+		/* user.setActive(1); */
+  
   Role userRole = roleRespository.findByRole("ADMIN");
   user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
   userRepository.save(user);
@@ -84,9 +85,9 @@ public Optional<User> getUser(Long id) {
 }
 
 @Override
-public List<userDetailsDTO> findUserByUserName(String email,String password) {
+public List<userDetailsDTO> findUserByUserName(String email, String password, Long id, String usertype) {
 	
-	return userRepository.findUserByUserName(email,password);
+	return userRepository.findUserByUserName(email, password, id, usertype);
 }
 
 

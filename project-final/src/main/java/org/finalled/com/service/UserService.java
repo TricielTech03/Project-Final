@@ -16,7 +16,7 @@ public interface UserService {
   
  public User findUserByEmail(String email);
  
-public List<userDetailsDTO> findUserByUserName(String email,String password);
+public List<userDetailsDTO> findUserByUserName(String email, String password, Long id, String usertype);
  
  
  

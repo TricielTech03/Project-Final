@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.finalled.com.entity.GoodsVehicle;
+import org.finalled.com.entity.Truck;
+import org.finalled.com.entity.User;
 import org.finalled.com.repository.GoodsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,9 +28,9 @@ public class GoodService
 	}
 
 
-public void createGood(GoodsVehicle good)
+public GoodsVehicle createGood(GoodsVehicle good)
 {
-	goodsRepository.save(good);
+	 return goodsRepository.save(good);
 }
 
 
@@ -39,6 +41,7 @@ public GoodsVehicle updateGood(GoodsVehicle good)
 
 }
 
+
 public boolean deleteGood(Long id) {
 	if(goodsRepository.findById(id)!=null) {
 		 goodsRepository.deleteById(id);
@@ -47,5 +50,22 @@ public boolean deleteGood(Long id) {
 			return false;
 		}
 }
+
+
+public GoodsVehicle findGoodByPostId(String postId) {
+	// TODO Auto-generated method stub
+	return goodsRepository.findGoodByPostId(postId);
+}
+
+
+
+
+
+
+
+
+
+
+
 
 }

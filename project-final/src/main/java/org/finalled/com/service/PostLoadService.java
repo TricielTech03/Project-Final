@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.finalled.com.entity.CustomPostLoad;
+
 import org.finalled.com.entity.PostLoad;
 import org.finalled.com.repository.PostLoadRepository;
 import org.springframework.beans.factory.annotation.Autowired;

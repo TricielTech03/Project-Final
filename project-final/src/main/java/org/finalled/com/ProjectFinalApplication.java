@@ -5,7 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages="org.finalled.com")
+ @ComponentScan(basePackages="org.finalled.com") 
+
 public class ProjectFinalApplication {
 
 	public static void main(String[] args) {

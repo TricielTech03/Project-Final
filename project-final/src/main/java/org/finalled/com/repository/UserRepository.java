@@ -21,8 +21,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
  User findByEmail(String email);
  
 
- @Query(value="select new org.finalled.com.repository.userDetailsDTO ( tc.email, tc.userName,tc.password) from User tc where email=?1 ")
- List<userDetailsDTO> findUserByUserName(  @Param("email ") String email,@Param("password") String password);
+ @Query(value="select new org.finalled.com.repository.userDetailsDTO ( tc.email,  tc.username, tc.password, tc.id, tc.usertype) from User tc where email=?1 ")
+ List<userDetailsDTO> findUserByUserName(  @Param("email ") String email, @Param("password") String password, @Param("user_id") Long id, @Param("usertype ") String usertype);
 
 
  

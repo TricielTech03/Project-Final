@@ -5,10 +5,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.finalled.com.entity.Test;
-
+import org.finalled.com.entity.User;
 import org.finalled.com.repository.TestRepository;
-
+import org.finalled.com.repository.userDetailsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +19,12 @@ public class TestService
 
 	@Autowired
 	 private TestRepository testRepository;
+	
+	List<Test> findByTruckType(String truckType) 
+	{
+		return testRepository.findByTruckType(truckType);
+	}
+	 
 	 
 	public List<Test> getTests() 
 	{
@@ -54,18 +61,7 @@ public class TestService
 			 }
 		else {
 				return false;
-			 }
-	}
-
-
-
-	
-
-
-
-	
-	
-	
+			 }}	
 }
 
 

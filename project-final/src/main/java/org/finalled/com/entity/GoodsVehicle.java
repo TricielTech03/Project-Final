@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,8 +19,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class GoodsVehicle 
 {
 	           
-				/*private Long id;*/
+				
 	@Id
+	 @GeneratedValue() 
+	private Long id;
+	
 	@Column(name="user_id")
 	private String userId;
 				
@@ -37,20 +42,20 @@ public class GoodsVehicle
 
 				
 				
-			/*	@Column(name="user_id")
-				private String updatedBy;
-				
-				@Column(name="user_id")
-				private String updatedOn;
-				
-				@Temporal(TemporalType.TIMESTAMP)
-				@UpdateTimestamp
-				private Date updatedAt;
+	/*
+	 * @Column(name="user_id") private String updatedBy;
+	 * 
+	 * @Column(name="user_id") private String updatedOn;
+	 * 
+	 * @Temporal(TemporalType.TIMESTAMP)
+	 * 
+	 * @UpdateTimestamp private Date updatedAt;
+	 */
 				
 				@Temporal(TemporalType.TIMESTAMP)
 				@CreationTimestamp
 				private Date createdAt;
-*/
+
 	public GoodsVehicle() {
 					
 				}
@@ -66,12 +71,13 @@ public class GoodsVehicle
 
 
 
+				public Date getCreatedAt() {
+					return createdAt;
+				}
 
-			
-
-
-
-
+				public void setCreatedAt(Date createdAt) {
+					this.createdAt = createdAt;
+				}
 
 				public String getUserId() {
 					return userId;
