@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.finalled.com.entity.MyBooking;
+import org.finalled.com.entity.Test;
 import org.finalled.com.repository.MyBookingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,10 @@ public class MyBookingService
 	private MyBookingRepository myBookingRepository;
 	
 	
+	/*
+	 * List<MyBooking> findByUserId(String user_id) { return
+	 * myBookingRepository.findByUserId(user_id); }
+	 */
 	
 	public List<MyBooking> getBookings()
 	{

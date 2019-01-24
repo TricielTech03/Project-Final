@@ -2,46 +2,42 @@ package org.finalled.com.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+@Entity(name = "goods_vehicle")
+public class GoodsVehicle {
 
-@Entity(name="goods_vehicle")
-public class GoodsVehicle 
-{
-	           
-				
 	@Id
-	 @GeneratedValue() 
+	@GeneratedValue()
 	private Long id;
-	
-	@Column(name="user_id")
-	private String userId;
-				
-				@Column(name="vehicle_id")
-				private String vehicleId;
-				
-				@Column(name="post_id")
-				private String postId;
-				
-				
-				
-				@Column(name="status")
-				private String status;
 
+	@Column(name = "user_id")
+	private String user_id;
 
+	@Column(name = "vehicle_id")
+	private String vehicle_id;
 
-				
-				
+	@Column(name = "post_id")
+	private String post_id;
+
+	@Column(name = "status")
+	private String status;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "booking_id", referencedColumnName = "booking_id")
+	private MyBooking booking_id;
+
 	/*
 	 * @Column(name="user_id") private String updatedBy;
 	 * 
@@ -51,99 +47,78 @@ public class GoodsVehicle
 	 * 
 	 * @UpdateTimestamp private Date updatedAt;
 	 */
-				
-				@Temporal(TemporalType.TIMESTAMP)
-				@CreationTimestamp
-				private Date createdAt;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@CreationTimestamp
+	private Date createdAt;
 
 	public GoodsVehicle() {
-					
-				}
-				
-				public GoodsVehicle(@JsonProperty("user_id") String userId,  @JsonProperty("vehicle_id")String vehicleId,@JsonProperty("post_id") String postId, @JsonProperty("status")String status) {
-				
-					this.userId = userId;
-					this.vehicleId = vehicleId;
-					this.postId = postId;
-					this.status = status;
-				}
 
+	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-				public Date getCreatedAt() {
-					return createdAt;
-				}
+	public String getUser_id() {
+		return user_id;
+	}
 
-				public void setCreatedAt(Date createdAt) {
-					this.createdAt = createdAt;
-				}
+	public void setUser_id(String user_id) {
+		this.user_id = user_id;
+	}
 
-				public String getUserId() {
-					return userId;
-				}
+	public String getVehicle_id() {
+		return vehicle_id;
+	}
 
+	public void setVehicle_id(String vehicle_id) {
+		this.vehicle_id = vehicle_id;
+	}
 
+	public String getPost_id() {
+		return post_id;
+	}
 
+	public void setPost_id(String post_id) {
+		this.post_id = post_id;
+	}
 
+	public String getStatus() {
+		return status;
+	}
 
-				public void setUserId(String userId) {
-					this.userId = userId;
-				}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 
+	public MyBooking getBooking_id() {
+		return booking_id;
+	}
 
+	public void setBooking_id(MyBooking booking_id) {
+		this.booking_id = booking_id;
+	}
 
+	public Date getCreatedAt() {
+		return createdAt;
+	}
 
+	public void setCreatedAt(Date createdAt) {
+		this.createdAt = createdAt;
+	}
 
-				public String getVehicleId() {
-					return vehicleId;
-				}
+	/*
+	 * public GoodsVehicle(@JsonProperty("id") Long
+	 * id, @JsonProperty("user_id")String user_id, @JsonProperty("vehicle_id")
+	 * String vehicle_id, @JsonProperty("post_id") String
+	 * post_id, @JsonProperty("status") String status, Date createdAt) { super();
+	 * this.id = id; this.user_id = user_id; this.vehicle_id = vehicle_id;
+	 * this.post_id = post_id; this.status = status; this.createdAt = createdAt; }
+	 */
 
-
-
-
-
-				public void setVehicleId(String vehicleId) {
-					this.vehicleId = vehicleId;
-				}
-
-
-
-
-
-				public String getPostId() {
-					return postId;
-				}
-
-
-
-
-
-				public void setPostId(String postId) {
-					this.postId = postId;
-				}
-
-
-
-
-
-				public String getStatus() {
-					return status;
-				}
-
-
-
-
-
-				public void setStatus(String status) {
-					this.status = status;
-				}
-				
-				
-				
-				
-				
-				
-				
-				
 }

@@ -1,101 +1,84 @@
 package org.finalled.com.entity;
 
-import java.sql.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 
-@Entity(name="mybooking")
-public class MyBooking {
-	@Id
-	private Long id;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
+import javax.persistence.SecondaryTables;
+import javax.persistence.Table;
 
-	@Column(name = "truck_name")
+@Entity
+@Table(name="mybooking")
+@SecondaryTables({
+    @SecondaryTable(name="post_loads", pkJoinColumns={
+        @PrimaryKeyJoinColumn(name="id", referencedColumnName="booking_id") }),
+    
+    
+    @SecondaryTable(name="vehicle_list", pkJoinColumns={
+        @PrimaryKeyJoinColumn(name="id", referencedColumnName="booking_id") })
+})
+public class MyBooking  {
+
+    @Id
+    @Column(name="booking_id")
+    private Long bookingId;
+
+    @Column(name = "truck_name",      table="vehicle_list")
 	private String truckName;
-
-	@Column(name = "truck_type")
-	private String truckType;
-
-	@Column(name = "truck_model")
-	private String truckModel;
-
-	@Column(name = "truck_registration_no")
-	private String truckRegistrationNumber;
-
-	@Column(name = "truck_driver")
-	private String truckDriver;
-
-	@Column(name = "truck_owner")
-	private String truckOwner;
-
-	@Column(name = "truck_owner_phone")
+    
+    @Column(name="truck_type",        table="vehicle_list")
+   	private String truckType;
+   	
+    @Column(name="truck_main_image",  table="vehicle_list")
+   	private String truckMainImg;
+   	
+    @Column(name="truck_owner",       table="vehicle_list")
+   	private String truckOwner;
+   	
+    @Column(name="truck_owner_phone", table="vehicle_list")
 	private String truckOwnerPhone;
+	
+    
+    @Column(name="driver_name",       table="vehicle_list")
+	private String diverName;
+    
+    @Column(name="driver_mobile_no",  table="vehicle_list")
+	private String driverMobileNumber;
+   	
+	
+	
+	
+   	
+    
 
-	@Column(name = "truck_color")
-	private String truckColor;
-
-	@Column(name = "goods_image")
-	private String goodsImage;
-
-	@Column(name = "capacity")
-	private String capacity;
-
-	@Column(name = "goods_type")
-	private String goodsType;
-
-	@Column(name = "from_address")
-	private String fromAddress;
-
-	@Column(name = "to_address")
+  
+    @Column(name="goods_photo",   table="post_loads")
+	private String goodsPhoto;
+	
+	
+    @Column(name="from_address",   table="post_loads")
+	  private String fromAddress;
+	 
+	
+    @Column(name="to_address",     table="post_loads")
 	private String toAddress;
+	
+    @Column(name="capacity",       table="post_loads")
+    private String capacity;
 
-	@Column(name = "freight_charges")
-	private String freightCharges;
+    @Column(name="freight_charges", table="post_loads")
+    private String freightCharges;
 
-	@Column(name = "truck_image")
-	private String truckImage;
-
-	@Column(name = "cdate")
-	private Date cDate;
-
-	public MyBooking() 
-	{
-
+	public Long getBookingId() {
+		return bookingId;
 	}
 
-	public MyBooking(@JsonProperty("id")           Long   id,          @JsonProperty("truck_name")  String truckName,  @JsonProperty("truck_type")        String truckType,       @JsonProperty("truck_model") String truckModel, @JsonProperty("truck_registration_no") String truckRegistrationNumber,
-			         @JsonProperty("truck_driver") String truckDriver, @JsonProperty("truck_owner") String truckOwner, @JsonProperty("truck_owner_phone") String truckOwnerPhone, @JsonProperty("truck_color") String truckColor, @JsonProperty("goods_image")           String goodsImage,
-			         @JsonProperty("capacity")     String capacity,    @JsonProperty("goods_type")  String goodsType,  @JsonProperty("from_address")      String fromAddress,     @JsonProperty("to_address")  String toAddress,  @JsonProperty("freight_charges")       String freightCharges,
-			         @JsonProperty("truck_image")  String truckImage,  @JsonProperty("cdate")       Date   cDate) 
-	{
-
-		this.id = id;
-		this.truckName = truckName;
-		this.truckType = truckType;
-		this.truckModel = truckModel;
-		this.truckRegistrationNumber = truckRegistrationNumber;
-		this.truckDriver = truckDriver;
-		this.truckOwner = truckOwner;
-		this.truckOwnerPhone = truckOwnerPhone;
-		this.truckColor = truckColor;
-		this.goodsImage = goodsImage;
-		this.capacity = capacity;
-		this.goodsType = goodsType;
-		this.fromAddress = fromAddress;
-		this.toAddress = toAddress;
-		this.freightCharges = freightCharges;
-		this.truckImage = truckImage;
-		this.cDate = cDate;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setBookingId(Long bookingId) {
+		this.bookingId = bookingId;
 	}
 
 	public String getTruckName() {
@@ -114,28 +97,12 @@ public class MyBooking {
 		this.truckType = truckType;
 	}
 
-	public String getTruckModel() {
-		return truckModel;
+	public String getTruckMainImg() {
+		return truckMainImg;
 	}
 
-	public void setTruckModel(String truckModel) {
-		this.truckModel = truckModel;
-	}
-
-	public String getTruckRegistrationNumber() {
-		return truckRegistrationNumber;
-	}
-
-	public void setTruckRegistrationNumber(String truckRegistrationNumber) {
-		this.truckRegistrationNumber = truckRegistrationNumber;
-	}
-
-	public String getTruckDriver() {
-		return truckDriver;
-	}
-
-	public void setTruckDriver(String truckDriver) {
-		this.truckDriver = truckDriver;
+	public void setTruckMainImg(String truckMainImg) {
+		this.truckMainImg = truckMainImg;
 	}
 
 	public String getTruckOwner() {
@@ -154,36 +121,28 @@ public class MyBooking {
 		this.truckOwnerPhone = truckOwnerPhone;
 	}
 
-	public String getTruckColor() {
-		return truckColor;
+	public String getDiverName() {
+		return diverName;
 	}
 
-	public void setTruckColor(String truckColor) {
-		this.truckColor = truckColor;
+	public void setDiverName(String diverName) {
+		this.diverName = diverName;
 	}
 
-	public String getGoodsImage() {
-		return goodsImage;
+	public String getDriverMobileNumber() {
+		return driverMobileNumber;
 	}
 
-	public void setGoodsImage(String goodsImage) {
-		this.goodsImage = goodsImage;
+	public void setDriverMobileNumber(String driverMobileNumber) {
+		this.driverMobileNumber = driverMobileNumber;
 	}
 
-	public String getCapacity() {
-		return capacity;
+	public String getGoodsPhoto() {
+		return goodsPhoto;
 	}
 
-	public void setCapacity(String capacity) {
-		this.capacity = capacity;
-	}
-
-	public String getGoodsType() {
-		return goodsType;
-	}
-
-	public void setGoodsType(String goodsType) {
-		this.goodsType = goodsType;
+	public void setGoodsPhoto(String goodsPhoto) {
+		this.goodsPhoto = goodsPhoto;
 	}
 
 	public String getFromAddress() {
@@ -202,6 +161,14 @@ public class MyBooking {
 		this.toAddress = toAddress;
 	}
 
+	public String getCapacity() {
+		return capacity;
+	}
+
+	public void setCapacity(String capacity) {
+		this.capacity = capacity;
+	}
+
 	public String getFreightCharges() {
 		return freightCharges;
 	}
@@ -210,22 +177,14 @@ public class MyBooking {
 		this.freightCharges = freightCharges;
 	}
 
-	public String getTruckImage() {
-		return truckImage;
-	}
-
-	public void setTruckImage(String truckImage) {
-		this.truckImage = truckImage;
-	}
-
-	public Date getcDate() {
-		return cDate;
-	}
-
-	public void setcDate(Date cDate) {
-		this.cDate = cDate;
-	}
 	
+	/*
+	 * public MyBooking() {
+	 * 
+	 * }
+	 */
 	
-
-}
+    
+    
+    
+	}

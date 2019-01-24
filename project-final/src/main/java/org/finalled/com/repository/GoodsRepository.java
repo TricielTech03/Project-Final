@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 public interface GoodsRepository extends CrudRepository<GoodsVehicle, Long>
 {
 
-	GoodsVehicle findGoodByPostId(String postId);
+	/* GoodsVehicle findGoodByPostId(String post_id); */
 	
 	
 }

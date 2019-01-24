@@ -52,10 +52,10 @@ public boolean deleteGood(Long id) {
 }
 
 
-public GoodsVehicle findGoodByPostId(String postId) {
-	// TODO Auto-generated method stub
-	return goodsRepository.findGoodByPostId(postId);
-}
+	/*
+	 * public GoodsVehicle findGoodByPostId(String post_id) { // TODO Auto-generated
+	 * method stub return goodsRepository.findGoodByPostId(post_id); }
+	 */
 
 
 
