@@ -17,10 +17,10 @@ public class MyBookingService
 	private MyBookingRepository myBookingRepository;
 	
 	
-	/*
-	 * List<MyBooking> findByUserId(String user_id) { return
-	 * myBookingRepository.findByUserId(user_id); }
-	 */
+	
+	  List<MyBooking> findByUserId(String user_id) { return
+	  myBookingRepository.findByUserId(user_id); }
+	 
 	
 	public List<MyBooking> getBookings()
 	{

@@ -6,13 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
+import org.finalled.com.entity.GoodsVehicle;
 import org.finalled.com.entity.Truck;
 import org.finalled.com.service.TruckService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -55,14 +58,30 @@ public class TruckController
 			    return truckService.getTruck(id);
 		      }
 		
-		//Rest api method to create a new truck
-		@RequestMapping(value="/createTruck", method=RequestMethod.POST)
-		public void createTruck(@RequestBody Truck truck) 
-		      {
-			       truckService.createTruck(truck);	
-			       
-			  
-		      }
+	/*
+	 * //Rest api method to create a new truck
+	 * 
+	 * @RequestMapping(value="/createTruck", method=RequestMethod.POST) public void
+	 * createTruck(@RequestBody Truck truck) { truckService.createTruck(truck);
+	 * 
+	 * 
+	 * }
+	 */
+		
+		@RequestMapping(value = "/createTruck", method = RequestMethod.POST, consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, produces = {
+				MediaType.APPLICATION_ATOM_XML_VALUE, MediaType.APPLICATION_JSON_VALUE })
+
+		@ResponseBody
+		public String createTruck(Truck truck) {
+
+			
+
+			truckService.createTruck(truck);
+
+			return "Truck Created Successfully";
+
+		}
+		
 		
 		//Rest api method to get an update of existing truck
 		@RequestMapping(value ="/updateTruck", method=RequestMethod.POST)

@@ -6,16 +6,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import javax.validation.Valid;
+
 
 import org.finalled.com.entity.GoodsVehicle;
-import org.finalled.com.entity.Truck;
-import org.finalled.com.entity.User;
 import org.finalled.com.repository.GoodsRepository;
 import org.finalled.com.service.GoodService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.RequestBody;
@@ -90,7 +88,7 @@ public class GoodController {
 
 		goodService.createGood(good);
 
-		return "Good created successfully";
+		return "Good Booked successfully";
 
 	}
 

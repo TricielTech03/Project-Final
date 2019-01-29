@@ -4,10 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.finalled.com.entity.GoodsVehicle;
 import org.finalled.com.entity.MyBooking;
-import org.finalled.com.entity.Test;
-import org.finalled.com.entity.Truck;
+
 import org.finalled.com.repository.MyBookingRepository;
 import org.finalled.com.service.MyBookingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,11 +28,7 @@ public class MyBookingController {
 	@Autowired
 	private MyBookingRepository myBookingRepository;
 
-	
-	
-
-	
-	@RequestMapping(value = "/mybooking.php", method = RequestMethod.GET,produces="application/json")
+	@RequestMapping(value = "/mybooking.php", method = RequestMethod.GET, produces = "application/json")
 	public Map<String, List<MyBooking>> getTrucks() throws JsonProcessingException {
 		Map<String, List<MyBooking>> usersMap = new HashMap<String, List<MyBooking>>();
 		List<MyBooking> mybook = myBookingService.getBookings();
@@ -45,41 +39,36 @@ public class MyBookingController {
 		return usersMap;
 
 	}
-	 
-   
-   
- 
-	/*
-	 * @RequestMapping(value= {"/my_booking.php"}, method=RequestMethod.GET)
-	 * 
-	 * public Map<String, List<MyBooking>> findByUserId(
-	 * 
-	 * @PathVariable Long id, @Param(value = "user_id") String user_id) throws
-	 * JsonProcessingException { Map<String, List<MyBooking>> usersMap = new
-	 * HashMap<String, List<MyBooking>>(); List<MyBooking> Users
-	 * =myBookingRepository.findByUserId(user_id); usersMap.put("result", Users);
-	 * ObjectMapper mapper = new ObjectMapper();
-	 * System.out.println(mapper.writeValueAsString(usersMap));
-	 * 
-	 * return usersMap;
-	 * 
-	 * }
-	 */
-	 
 
-	@RequestMapping(value = "/my_booking.php", method = RequestMethod.POST, produces = "application/json")
-	public Map<String, List<MyBooking>> getBookings(@Param(value = "user_id") String user_id)
-			throws JsonProcessingException {
-		Map<String, List<MyBooking>> usersmap = new HashMap<String, List<MyBooking>>();
+	@RequestMapping(value = { "/my_booking.php" }, method = RequestMethod.GET)
 
-		/* List<MyBooking> mybook =myBookingRepository.findByUserId(user_id); */
-		List<MyBooking> mybook = myBookingService.getBookings();
-		usersmap.put("result", mybook);
-		ObjectMapper obj = new ObjectMapper();
-		System.out.println(obj.writeValueAsString(usersmap));
+	public Map<String, List<MyBooking>> findByUserId(
 
-		return usersmap;
+			/* @PathVariable Long id, */ @Param(value = "user_id") String user_id) throws JsonProcessingException {
+		Map<String, List<MyBooking>> usersMap = new HashMap<String, List<MyBooking>>();
+		List<MyBooking> Users = myBookingRepository.findByUserId(user_id);
+		usersMap.put("result", Users);
+		ObjectMapper mapper = new ObjectMapper();
+		System.out.println(mapper.writeValueAsString(usersMap));
+
+		return usersMap;
+
 	}
+
+	
+	  @RequestMapping(value = "/my_booking.php", method = RequestMethod.POST,
+	  produces = "application/json") public Map<String, List<MyBooking>>
+	  getBookings(@Param(value = "user_id") String user_id) throws
+	  JsonProcessingException { Map<String, List<MyBooking>> usersmap = new
+	  HashMap<String, List<MyBooking>>();
+	  
+	  List<MyBooking> mybook =myBookingRepository.findByUserId(user_id);
+		/* List<MyBooking> mybook = myBookingService.getBookings(); */
+	  usersmap.put("result", mybook); ObjectMapper obj = new ObjectMapper();
+	  System.out.println(obj.writeValueAsString(usersmap));
+	  
+	  return usersmap; }
+	 
 
 	/*
 	 * @RequestMapping(value="/my_booking.php", method=RequestMethod.POST,

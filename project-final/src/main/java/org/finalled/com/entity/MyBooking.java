@@ -1,84 +1,122 @@
 package org.finalled.com.entity;
 
+import java.sql.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
 
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.SecondaryTables;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
-@Table(name="mybooking")
+@Table(name = "mybooking")
 @SecondaryTables({
-    @SecondaryTable(name="post_loads", pkJoinColumns={
-        @PrimaryKeyJoinColumn(name="id", referencedColumnName="booking_id") }),
-    
-    
-    @SecondaryTable(name="vehicle_list", pkJoinColumns={
-        @PrimaryKeyJoinColumn(name="id", referencedColumnName="booking_id") })
-})
-public class MyBooking  {
+		@SecondaryTable(name = "post_loads", pkJoinColumns = {
+				@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "booking_id") }),
+		
 
-    @Id
-    @Column(name="booking_id")
-    private Long bookingId;
+		@SecondaryTable(name = "goods_vehicle", pkJoinColumns = {
+				@PrimaryKeyJoinColumn(name = "booking_id", referencedColumnName = "booking_id") }),
+		
+		@SecondaryTable(name = "vehicle_list", pkJoinColumns = {
+				@PrimaryKeyJoinColumn(name = "id", referencedColumnName = "booking_id") }) })
 
-    @Column(name = "truck_name",      table="vehicle_list")
-	private String truckName;
-    
-    @Column(name="truck_type",        table="vehicle_list")
-   	private String truckType;
-   	
-    @Column(name="truck_main_image",  table="vehicle_list")
-   	private String truckMainImg;
-   	
-    @Column(name="truck_owner",       table="vehicle_list")
-   	private String truckOwner;
-   	
-    @Column(name="truck_owner_phone", table="vehicle_list")
-	private String truckOwnerPhone;
-	
-    
-    @Column(name="driver_name",       table="vehicle_list")
-	private String diverName;
-    
-    @Column(name="driver_mobile_no",  table="vehicle_list")
-	private String driverMobileNumber;
-   	
-	
-	
-	
-   	
-    
 
-  
-    @Column(name="goods_photo",   table="post_loads")
-	private String goodsPhoto;
-	
-	
-    @Column(name="from_address",   table="post_loads")
-	  private String fromAddress;
+
+
+public class MyBooking {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "booking_id")
+	private Long booking_id;
 	 
+	 @JsonProperty("user_id")
+	@Column(name = "user_id",    table="goods_vehicle")
+	private String userId;
 	
-    @Column(name="to_address",     table="post_loads")
+	 @JsonProperty("truck_name")
+	@Column(name = "truck_name", table = "vehicle_list")
+	private String truckName;
+
+	 
+	 @JsonProperty("truck_type")
+	@Column(name = "truck_type", table = "vehicle_list")
+	private String truckType;
+
+	 
+	 @JsonProperty("truck_main_image")
+	@Column(name = "truck_main_image", table = "vehicle_list")
+	private String truckMainImg;
+
+	 @JsonProperty("truck_owner")
+	@Column(name = "truck_owner", table = "vehicle_list")
+	private String truckOwner;
+
+	 
+	 @JsonProperty("truck_owner_phone")
+	@Column(name = "truck_owner_phone", table = "vehicle_list")
+	private String truckOwnerPhone;
+
+	 
+	 @JsonProperty("driver_name")
+	@Column(name = "driver_name", table = "vehicle_list")
+	private String diverName;
+
+	 @JsonProperty("driver_mobile_no")
+	@Column(name = "driver_mobile_no", table = "vehicle_list")
+	private String driverMobileNumber;
+
+	 
+	 @JsonProperty("goods_image")
+	@Column(name = "goods_photo", table = "post_loads")
+	private String goodsPhoto;
+
+	 
+	 @JsonProperty("goods_type")
+	 @Column(name = "goods_type", table = "post_loads")
+		private String goodsType;
+	 
+	 @JsonProperty("from_address")
+	@Column(name = "from_address", table = "post_loads")
+	private String fromAddress;
+
+	 
+	 @JsonProperty("to_address")
+	@Column(name = "to_address", table = "post_loads")
 	private String toAddress;
+
+	 
+	 @JsonProperty("capacity")
+	@Column(name = "capacity", table = "post_loads")
+	private String capacity;
+
+	 
+	 @JsonProperty("freight_charges")
+	@Column(name = "freight_charges", table = "post_loads")
+	private String freightCharges;
+
+	 
+	 @JsonProperty("cdate")
+	 @Column(name="cdate", table = "post_loads")
+		private Date cDate;
 	
-    @Column(name="capacity",       table="post_loads")
-    private String capacity;
+	
+	
 
-    @Column(name="freight_charges", table="post_loads")
-    private String freightCharges;
-
-	public Long getBookingId() {
-		return bookingId;
+	public String getUserId() {
+		return userId;
 	}
 
-	public void setBookingId(Long bookingId) {
-		this.bookingId = bookingId;
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getTruckName() {
@@ -177,14 +215,10 @@ public class MyBooking  {
 		this.freightCharges = freightCharges;
 	}
 
-	
 	/*
 	 * public MyBooking() {
 	 * 
 	 * }
 	 */
-	
-    
-    
-    
-	}
+
+}

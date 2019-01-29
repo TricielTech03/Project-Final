@@ -2,25 +2,38 @@ package org.finalled.com.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-@Entity(name = "goods_vehicle")
-public class GoodsVehicle {
+@Entity()
+@Table(name = "goods_vehicle")
 
+public class GoodsVehicle {
 	@Id
-	@GeneratedValue()
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	
+	@Column(name = "booking_id", updatable = false, nullable = false)
+	
+	private Long booking_id;
+
+	/*
+	 * @GeneratedValue()
+	 * 
+	 * @OneToOne(cascade = CascadeType.ALL)
+	 * 
+	 * @JoinColumn(name = "booking_id", referencedColumnName = "booking_id") private
+	 * MyBooking booking_id;
+	 */
 
 	@Column(name = "user_id")
 	private String user_id;
@@ -33,10 +46,6 @@ public class GoodsVehicle {
 
 	@Column(name = "status")
 	private String status;
-
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "booking_id", referencedColumnName = "booking_id")
-	private MyBooking booking_id;
 
 	/*
 	 * @Column(name="user_id") private String updatedBy;
@@ -56,12 +65,12 @@ public class GoodsVehicle {
 
 	}
 
-	public Long getId() {
-		return id;
+	public Long getBooking_id() {
+		return booking_id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public void setBooking_id(Long booking_id) {
+		this.booking_id = booking_id;
 	}
 
 	public String getUser_id() {
@@ -94,14 +103,6 @@ public class GoodsVehicle {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public MyBooking getBooking_id() {
-		return booking_id;
-	}
-
-	public void setBooking_id(MyBooking booking_id) {
-		this.booking_id = booking_id;
 	}
 
 	public Date getCreatedAt() {

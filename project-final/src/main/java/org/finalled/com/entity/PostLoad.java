@@ -5,7 +5,15 @@ import java.sql.Time;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -15,41 +23,61 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class PostLoad 
 {
 	@Id
+	/* @GeneratedValue(strategy = GenerationType.TABLE) */
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
+	
+	
 	
 	@Column(name="user_id")
 	private String userId;
 	
+	
 	@Column(name="truck_type")
 	private String truckType;
+	
 	
 	@Column(name="capacity")
 	private String capacity;
 	
+	
 	@Column(name="goods_type")
 	private String goodsType;
+	
 	
 	@Column(name="goods_photo")
 	private String goodsPhoto;
 	
+	
 	@Column(name="from_address")
 	private String fromAddress;
+	
 	
 	@Column(name="to_address")
 	private String toAddress;
 	
+	
 	@Column(name="freight_charges")
 	private String freightCharges;
 	
-	@Column(name="location_charges")
-	private String locationCharges;
+	 
 	
-	@Column(name="display_charges")
+	@Column(name="displayLocation")
+	private String displayLocation;
+	
+	 
+	
+	@Column(name="displayCharges")
 	private String displayCharges;
 	
+	
+	
+   @CreatedDate
 	@Column(name="cdate")
 	private Date cDate;
 	
+	
+	@CreationTimestamp
 	@Column(name="ctime")
 	private Time cTime;
 
@@ -60,18 +88,16 @@ public class PostLoad
 
 	
 	
-	public PostLoad(Long id, String userId, String truckType, String capacity) {
-		super();
-		this.id = id;
-		this.userId = userId;
-		this.truckType = truckType;
-		this.capacity = capacity;
-	}
+	/*
+	 * public PostLoad(Long id, String userId, String truckType, String capacity) {
+	 * super(); this.id = id; this.userId = userId; this.truckType = truckType;
+	 * this.capacity = capacity; }
+	 */
 
 
 
 	public PostLoad(@JsonProperty("id") Long id,                      @JsonProperty("user_id")  String userId,       @JsonProperty("truck_type") String truckType,           @JsonProperty("capacity") String capacity,                @JsonProperty("goods_type")  String goodsType,         @JsonProperty("goods_photo")  String goodsPhoto,
-			        @JsonProperty("from_address") String fromAddress, @JsonProperty("to_address")  String toAddress, @JsonProperty("freight_charges") String freightCharges, @JsonProperty("location_charges") String locationCharges, @JsonProperty("display_charges")  String displayCharges,
+			        @JsonProperty("from_address") String fromAddress, @JsonProperty("to_address")  String toAddress, @JsonProperty("freight_charges") String freightCharges, @JsonProperty("display_location") String displayLocation, @JsonProperty("display_charges")  String displayCharges,
 			        @JsonProperty("cdate") Date cDate,                @JsonProperty("ctime") Time cTime) {
 		
 		this.id = id;
@@ -83,7 +109,7 @@ public class PostLoad
 		this.fromAddress = fromAddress;
 		this.toAddress = toAddress;
 		this.freightCharges = freightCharges;
-		this.locationCharges = locationCharges;
+		this.displayLocation=displayLocation;
 		this.displayCharges = displayCharges;
 		this.cDate = cDate;
 		this.cTime = cTime;
@@ -161,13 +187,19 @@ public class PostLoad
 		this.freightCharges = freightCharges;
 	}
 
-	public String getLocationCharges() {
-		return locationCharges;
+	
+
+	public String getDisplayLocation() {
+		return displayLocation;
 	}
 
-	public void setLocationCharges(String locationCharges) {
-		this.locationCharges = locationCharges;
+
+
+	public void setDisplayLocation(String displayLocation) {
+		this.displayLocation = displayLocation;
 	}
+
+
 
 	public String getDisplayCharges() {
 		return displayCharges;

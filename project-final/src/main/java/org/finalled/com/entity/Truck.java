@@ -3,6 +3,7 @@ package org.finalled.com.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,54 +11,78 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Entity(name = "vehicle_list")
 public class Truck {
 	@Id
-	@GeneratedValue()
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	
 	private Long id;
 	
 	
+	@JsonProperty("user_id") 
+	@Column(name = "user_id")
+	private String userID;
+	
+	@JsonProperty("truck_no") 
 	@Column(name = "truck_no")
 	private String truckNo;
 	
+	
+	
+	@JsonProperty("truck_name") 
 	@Column(name = "truck_name")
 	private String truckName;
 	
-	
+	@JsonProperty("truck_type") 
 	@Column(name = "truck_type")
 	private String truckType;
 	
+	
+	@JsonProperty("truck_main_image") 
 	@Column(name = "truck_main_image")
 	private String truckMainImg;
 	
+	@JsonProperty("truck_owner") 
 	@Column(name = "truck_owner")
 	private String truckOwner;
 	
+	
+	@JsonProperty("truck_owner_phone") 
 	@Column(name = "truck_owner_phone")
 	private String truckOwnerPhone;
 	
+	
+	@JsonProperty("driver_id") 
 	@Column(name = "driver_id")
 	private String driverId;
 	
+	
+	@JsonProperty("driver_name") 
 	@Column(name = "driver_name")
 	private String diverName;
 	
+	@JsonProperty("driver_mobile_no") 
 	@Column(name = "driver_mobile_no")
 	private String driverMobileNumber;
 	
+	@JsonProperty("vehicle_rating") 
 	@Column(name = "vehicle_rating")
 	private String vehicleRating;
 	
+	@JsonProperty("favourite_status") 
 	@Column(name = "favourite_status")
 	private String favouriteStatus;
 	
+	@JsonProperty("freight_charge") 
 	@Column(name = "freight_charge")
 	private String frieghtCharge;
 	
+	@JsonProperty("lattitude") 
 	@Column(name = "lattitude")
 	private String latitude;
 	
+	@JsonProperty("longitude") 
 	@Column(name = "longitude")
 	private String longitude;
 	
+	@JsonProperty("distance") 
 	@Column(name = "distance")
 	private String distance;
 
@@ -65,10 +90,12 @@ public class Truck {
 	{
 		
 	}
+	
+	
 
-	public Truck(@JsonProperty("id")                Long id,                 @JsonProperty("truck_no")       String truckNo,       @JsonProperty("truck_name")   String truckName, @JsonProperty("truck_type")       String truckType,          @JsonProperty("truck_main_image") String truckMainImg,  @JsonProperty("truck_owner")  String truckOwner,
-			     @JsonProperty("truck_owner_phone") String truckOwnerPhone,  @JsonProperty("driver_id")      String driverId,      @JsonProperty("driver_name")  String diverName, @JsonProperty("driver_mobile_no") String driverMobileNumber, @JsonProperty("vehicle_rating")   String vehicleRating,
-			    @JsonProperty("favourite_status")   String favouriteStatus,  @JsonProperty("freight_charge") String frieghtCharge, @JsonProperty("lattitude")    String latitude,  @JsonProperty("longitude")        String longitude,          @JsonProperty("distance")         String distance) {
+	public Truck(Long id, String truckNo, String truckName, String truckType, String truckMainImg, String truckOwner,
+			String truckOwnerPhone, String driverId, String diverName, String driverMobileNumber, String vehicleRating,
+			String favouriteStatus, String frieghtCharge, String latitude, String longitude, String distance) {
 		super();
 		this.id = id;
 		this.truckNo = truckNo;
@@ -88,6 +115,34 @@ public class Truck {
 		this.distance = distance;
 	}
 
+
+
+	/*
+	 * public Truck(@JsonProperty("id") Long id, @JsonProperty("truck_no") String
+	 * truckNo, @JsonProperty("truck_name") String
+	 * truckName, @JsonProperty("truck_type") String
+	 * truckType, @JsonProperty("truck_main_image") String
+	 * truckMainImg, @JsonProperty("truck_owner") String truckOwner,
+	 * 
+	 * @JsonProperty("truck_owner_phone") String
+	 * truckOwnerPhone, @JsonProperty("driver_id") String
+	 * driverId, @JsonProperty("driver_name") String
+	 * diverName, @JsonProperty("driver_mobile_no") String
+	 * driverMobileNumber, @JsonProperty("vehicle_rating") String vehicleRating,
+	 * 
+	 * @JsonProperty("favourite_status") String
+	 * favouriteStatus, @JsonProperty("freight_charge") String
+	 * frieghtCharge, @JsonProperty("lattitude") String
+	 * latitude, @JsonProperty("longitude") String
+	 * longitude, @JsonProperty("distance") String distance) { super(); this.id =
+	 * id; this.truckNo = truckNo; this.truckName = truckName; this.truckType =
+	 * truckType; this.truckMainImg = truckMainImg; this.truckOwner = truckOwner;
+	 * this.truckOwnerPhone = truckOwnerPhone; this.driverId = driverId;
+	 * this.diverName = diverName; this.driverMobileNumber = driverMobileNumber;
+	 * this.vehicleRating = vehicleRating; this.favouriteStatus = favouriteStatus;
+	 * this.frieghtCharge = frieghtCharge; this.latitude = latitude; this.longitude
+	 * = longitude; this.distance = distance; }
+	 */
 	public Long getId() {
 		return id;
 	}

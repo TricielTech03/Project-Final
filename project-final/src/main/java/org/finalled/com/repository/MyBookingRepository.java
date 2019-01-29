@@ -8,5 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MyBookingRepository extends  JpaRepository<MyBooking, Long>
 {
-	/* List<MyBooking> findByUserId(String user_id); */
+	 List<MyBooking> findByUserId(String user_id); 
 }
